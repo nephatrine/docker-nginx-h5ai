@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+if [[ -d /etc/services.d/10-mysqld ]]; then
+	rm -rf /etc/services.d/10-mysqld
+fi
+
+if [[ -d /etc/services.d/11-mysql-setup ]]; then
+	rm -rf /etc/services.d/11-mysql-setup
+fi
+
+echo 'Skipping. MariaDB not needed.'
