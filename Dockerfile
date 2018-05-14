@@ -12,7 +12,7 @@ RUN echo "====== NOT MUCH TO DO ======" \
  && cd /usr/src \
  && git clone https://github.com/lrsjng/h5ai.git && cd h5ai \
  && npm install && npm run build \
- && unzip build/*.zip -d /var/www/html/
+ && unzip build/*.zip -d /var/www/html/ \
  \
  && echo "====== CLEANUP ======" \
  && cd /usr/src \
