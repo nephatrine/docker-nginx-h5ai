@@ -10,6 +10,9 @@ interface. For private files, you can either lock them down via the NGINX config
 example that will hide files under /local/) or use a separate docker that is not publicly
 accessible in the first place.
 
+Configure it by editing `/_h5ai/private/conf/options.json` in the media volume. I suggest disabling
+custom headers and footers as it will cause a lot of open_basedir errors in the PHP logs.
+
 Certbot (LetsEncrypt) is installed to handle obtaining SSL certs in case this is your only web
 docker. If you plan on hosting multiple applications/dockers, though I suggest having one
 [nginx-ssl](https://hub.docker.com/r/nephatrine/nginx-ssl/) docker that is publicly visible and
