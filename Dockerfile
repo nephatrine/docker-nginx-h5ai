@@ -3,6 +3,7 @@ LABEL maintainer="Daniel Wolf <nephatrine@gmail.com>"
 
 RUN echo "====== NOT MUCH TO DO ======" \
  && apk --update upgrade \
+ && apk add ffmpeg imagemagick zip \
  && mkdir -p /mnt/media \
  \
  && echo "====== PREPARE BUILD TOOLS ======" \
