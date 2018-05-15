@@ -11,7 +11,9 @@ example that will hide files under /local/) or use a separate docker that is not
 accessible in the first place.
 
 Configure it by editing `/_h5ai/private/conf/options.json` in the media volume. I suggest disabling
-custom headers and footers as it will cause a lot of open_basedir errors in the PHP logs.
+custom headers and footers as it will cause a lot of open_basedir errors in the PHP logs. Remember
+to change the password because the info page might expose information about your server that you do
+not want exposed.
 
 Certbot (LetsEncrypt) is installed to handle obtaining SSL certs in case this is your only web
 docker. If you plan on hosting multiple applications/dockers, though I suggest having one
