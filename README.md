@@ -23,7 +23,8 @@ which would actually be running on non-public IPs under plain HTTP.
 
 ## Settings
 
-- **DNSADDR:** DNS IPs (space-delimited)
+- **ADMINIP:** Administrative Access IP
+- **DNSADDR:** Resolver IPs (Space-Delimited)
 - **PUID:** Volume Owner UID
 - **PGID:** Volume Owner GID
 - **SSLEMAIL:** LetsEncrypt Email Address
