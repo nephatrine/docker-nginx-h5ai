@@ -1,4 +1,4 @@
-FROM nephatrine/nginx-lemp:latest
+FROM nephatrine/base-php7:latest
 LABEL maintainer="Daniel Wolf <nephatrine@gmail.com>"
 
 RUN echo "====== NOT MUCH TO DO ======" \
@@ -14,7 +14,12 @@ RUN echo "====== NOT MUCH TO DO ======" \
  && git clone https://github.com/lrsjng/h5ai.git && cd h5ai \
  && npm install && npm run build \
  && unzip build/*.zip -d /var/www/html/ \
- && sed -i 's/index.html/index.html \/_h5ai\/public\/index.php/g' /etc/nginx/nginx.conf \
+ \
+ && echo "====== CONFIGURE NGINX ======" \
+ && sed -i 's~index.html~index.html /_h5ai/public/index.php~g' /etc/nginx/nginx.conf \
+ \
+ && echo "====== CONFIGURE PHP ======" \
+ && sed -i 's~/mnt/config/www/~/mnt/config/www/:/mnt/media/~g' /etc/php/php-fpm.d/www.conf \
  \
  && echo "====== CLEANUP ======" \
  && cd /usr/src \
