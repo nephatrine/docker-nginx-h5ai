@@ -13,6 +13,7 @@ RUN echo "====== NOT MUCH TO DO ======" \
  && git clone https://github.com/lrsjng/h5ai.git && cd h5ai \
  && npm install && npm run build \
  && unzip build/*.zip -d /var/www/html/ \
+ && sed -i 's/index.html/index.html \/_h5ai\/public\/index.php/g' /etc/nginx/nginx.conf \
  \
  && echo "====== CLEANUP ======" \
  && cd /usr/src \
