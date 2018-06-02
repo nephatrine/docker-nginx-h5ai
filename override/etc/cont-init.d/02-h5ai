@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+HOME=/mnt/config/home
+
 if [[ ! -d /mnt/media/_h5ai ]]; then
   s6-setuidgid guardian mkdir -p /mnt/media/_h5ai
   s6-setuidgid guardian cp -Rn /var/www/html/_h5ai/* /mnt/media/_h5ai/
