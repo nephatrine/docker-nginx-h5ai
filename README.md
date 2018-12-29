@@ -1,22 +1,52 @@
-[GitHub](https://github.com/nephatrine/docker-h5ai) |
+[Git Repo](https://code.nephatrine.net/nephatrine/docker-h5ai) |
 [DockerHub](https://hub.docker.com/r/nephatrine/h5ai/) |
-[unRAID](https://github.com/nephatrine/unraid-docker-templates)
+[unRAID Template](https://github.com/nephatrine/unraid-docker-templates)
 
-# H5AI Docker
+# H5AI Container
 
-This docker runs the [H5AI](https://larsjung.de/h5ai/) web directory index. Just put files and folders into the volume mapped to `/mnt/media` and they will be made accessible through the web interface. For private files, you can either lock them down via the NGINX config (there's an example that will hide files under /local/) or use a separate docker that is not publicly accessible in the first place.
+This docker container manages the H5AI application, a lightweight web directory index.
 
-Configure it by editing ``{media}/_h5ai/private/conf/options.json`` in the media volume. I suggest disabling custom headers and footers as it will cause a lot of open_basedir errors in the PHP logs. **Remember to change the password** because the info page might expose information about your server that you do not want exposed.
+- [H5AI](https://larsjung.de/h5ai/)
 
-Certbot (LetsEncrypt) is installed to handle obtaining SSL certs in case this is your only web docker. If you plan on hosting multiple applications/dockers, though I suggest having one [nginx-ssl](https://hub.docker.com/r/nephatrine/nginx-ssl/) docker that is publicly visible and handles the SSL certs for all domains. That docker can then proxy all your other nginx dockers which would actually be running on non-public IPs under plain HTTP.
+## Configuration
 
-## Settings
+- ``{config}/etc/crontab``: Crontab Entries
+- ``{config}/etc/logrotate.conf``: Logrotate General Configuration
+- ``{config}/etc/logrotate.d/*``: Logrotate Per-Application Configuration
+- ``{config}/etc/mime.types``: NGINX MIME Types
+- ``{config}/etc/nginx.conf``: NGINX General Configuration
+- ``{config}/etc/nginx.d/*``: NGINX Per-Site Configuration
+- ``{config}/etc/php.d/*``: PHP Extension Configuration
+- ``{config}/etc/php.ini``: PHP General Configuration
+- ``{config}/etc/php-fpm.conf``: PHP-FPM General Configuration
+- ``{config}/etc/php-fpm.d/*``: PHP-FPM Per-Site Configuration
+- ``{config}/ssl/live/{site}/``: SSL/TLS certificates
+- ``{media}/_h5ai/private/conf/options.json``: H5AI Configuration
 
-See the [base image](https://github.com/nephatrine/docker-nginx-ssl) for additional settings.
+**Remember to change the password** in the h5ai configuration as the info page might expose information about your server that you do not want exposed.
+
+Just put files and folders into the volume mapped to `/mnt/media` and they will be made accessible through the web interface. For private files, you can either lock them down via the NGINX config (there's an example that will hide files under /local/) or use a container that is not publicly accessible in the first place.
+
+Certbot is included for requestung SSL certificates but you are better off just enabling HTTP from these containers and then using a single [docker-nginx-ssl](https://code.nephatrine.net/nephatrine/docker-nginx-ssl) container as a reverse proxy and handling all the HTTPS/SSL configuration there.
+
+## Ports
+
+- **80/tcp:** HTTP Port
+- **443/tcp:** HTTPS Port
+
+## Variables
+
+- **ADMINIP:** Administrative Access IP
+- **DNSADDR:** Resolver IPs (Space-Delimited)
+- **PUID:** Volume Owner UID
+- **PGID:** Volume Owner GID
+- **SSLEMAIL:** LetsEncrypt Email Address
+- **SSLDOMAINS:** LetsEncrypt (Sub)domains (comma-delimited)
+- **TZ:** Time Zone
 
 ## Mount Points
 
-- **/mnt/config:** Configuration Volume
-- **/mnt/media:** Files/Data Volume
+- **/mnt/config:** Configuration/Logs
+- **/mnt/media:** Indexed Files
 
 The media mountpoint will have an `_h5ai` folder created in it, but otherwise will not be modified.
