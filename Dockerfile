@@ -1,15 +1,13 @@
-FROM nephatrine/nginx-php:latest
+FROM nephatrine/nginx-php:testing
 LABEL maintainer="Daniel Wolf <nephatrine@gmail.com>"
 
 RUN echo "====== INSTALL PACKAGES ======" \
  && apk add ffmpeg imagemagick zip \
  && rm -rf /var/cache/apk/*
 
-ARG H5AI_VERSION=v0.30.0
-
 RUN echo "====== COMPILE H5AI ======" \
  && apk add --virtual .build-h5ai git nodejs-npm \
- && git -C /usr/src clone -b "$H5AI_VERSION" --single-branch --depth=1 https://github.com/lrsjng/h5ai.git && cd /usr/src/h5ai \
+ && git -C /usr/src clone --depth=1 https://github.com/lrsjng/h5ai.git && cd /usr/src/h5ai \
  && npm install \
  && npm run build \
  && unzip build/*.zip -d /var/www/html/ \

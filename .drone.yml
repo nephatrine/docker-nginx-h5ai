@@ -8,19 +8,13 @@ platform:
   arch: amd64
 
 steps:
-- name: build-0.30
+- name: build-testing
   commands:
-  - docker build --pull -t nephatrine/nginx-h5ai:0.30 .
-  - HOME=/mnt/config/home docker push nephatrine/nginx-h5ai:0.30
-- name: build-latest
-  commands:
-  - docker tag nephatrine/nginx-h5ai:0.30 pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
-  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
-  - docker tag pdr.nephatrine.net/nephatrine/nginx-h5ai:latest nephatrine/nginx-h5ai:latest
-  - HOME=/mnt/config/home docker push nephatrine/nginx-h5ai:latest
-  - docker rmi pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
-  depends_on:
-  - build-0.30
+  - docker build --pull -t pdr.nephatrine.net/nephatrine/nginx-h5ai:testing .
+  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/nginx-h5ai:testing
+  - docker tag pdr.nephatrine.net/nephatrine/nginx-h5ai:testing nephatrine/nginx-h5ai:testing
+  - HOME=/mnt/config/home docker push nephatrine/nginx-h5ai:testing
+  - docker rmi pdr.nephatrine.net/nephatrine/nginx-h5ai:testing
 
 ---
 kind: pipeline
@@ -48,6 +42,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 431af154f92e3b2531db94ecbf84441da20cc8413ce7bbef1af8d0bc0f99485e
+hmac: 5de34f89c59b9714d6692c33bd8d715cdb4a5013dd617c4c97354f673d229689
 
 ...

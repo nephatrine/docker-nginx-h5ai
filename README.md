@@ -2,7 +2,7 @@
 [Docker](https://hub.docker.com/r/nephatrine/nginx-h5ai/) |
 [unRAID](https://code.nephatrine.net/nephatrine/unraid-containers)
 
-[![Build Status](https://ci.nephatrine.net/api/badges/nephatrine/docker-nginx-h5ai/status.svg?ref=refs/heads/master)](https://ci.nephatrine.net/nephatrine/docker-nginx-h5ai)
+[![Build Status](https://ci.nephatrine.net/api/badges/nephatrine/docker-nginx-h5ai/status.svg?ref=refs/heads/testing)](https://ci.nephatrine.net/nephatrine/docker-nginx-h5ai)
 
 # H5AI Web Index
 
