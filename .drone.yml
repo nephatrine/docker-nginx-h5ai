@@ -10,7 +10,7 @@ platform:
 steps:
 - name: build-0.30
   commands:
-  - docker build --pull -t nephatrine/nginx-h5ai:0.30 .
+  - docker build -t nephatrine/nginx-h5ai:0.30 .
   - HOME=/mnt/config/home docker push nephatrine/nginx-h5ai:0.30
 - name: build-latest
   commands:
@@ -48,6 +48,6 @@ trigger:
 
 ---
 kind: signature
-hmac: 431af154f92e3b2531db94ecbf84441da20cc8413ce7bbef1af8d0bc0f99485e
+hmac: 3b1a0278087689dcef3bac02f91eab061ce4136d2416a68380dbe65c2b665f7a
 
 ...
