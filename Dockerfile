@@ -10,7 +10,7 @@ RUN echo "====== COMPILE H5AI ======" \
  && apk add --virtual .build-h5ai \
   git \
   npm \
- && git -C /usr/src clone -b "$H5AI_VERSION" https://github.com/glubsy/h5ai.git && cd /usr/src/h5ai \
+ && git -C /usr/src clone -b "$H5AI_VERSION" --single-branch --depth=1 https://github.com/glubsy/h5ai.git && cd /usr/src/h5ai \
  && npm install \
  && npm run build \
  && unzip build/*.zip -d /var/www/html/ \
