@@ -1,4 +1,4 @@
-[Git](https://code.nephatrine.net/nephatrine/docker-nginx-h5ai) |
+[Git](https://code.nephatrine.net/nephatrine/docker-nginx-h5ai/src/branch/master) |
 [Docker](https://hub.docker.com/r/nephatrine/nginx-h5ai/) |
 [unRAID](https://code.nephatrine.net/nephatrine/unraid-containers)
 
@@ -19,6 +19,10 @@ the [nginx-ssl](https://hub.docker.com/r/nephatrine/nginx-ssl/) container. If
 part of a larger envinronment, we suggest using a separate container as a
 reverse proxy server and handle TLS there rather than here.
 
+- [Alpine Linux](https://alpinelinux.org/)
+- [Skarnet Software](https://skarnet.org/software/)
+- [S6 Overlay](https://github.com/just-containers/s6-overlay)
+- [CertBot](https://certbot.eff.org/)
 - [NGINX](https://www.nginx.com/)
 - [PHP](https://www.php.net/)
 - [H5AI](https://larsjung.de/h5ai/)
@@ -36,9 +40,8 @@ applications.
 
 ## Docker Tags
 
-- **nephatrine/nginx-h5ai:testing**: H5AI Master
-- **nephatrine/nginx-h5ai:latest**: H5AI 0.30.0
-- **nephatrine/nginx-h5ai:0.30**: H5AI 0.30.0
+- **nephatrine/nginx-h5ai:testing**: H5AI 0.31.0-glubsy / PHP 8 / NGINX Mainline / Alpine Edge
+- **nephatrine/nginx-h5ai:latest**: H5AI 0.31.0-glubsy / PHP 8 / NGINX Mainline / Alpine Latest
 
 ## Configuration Variables
 
