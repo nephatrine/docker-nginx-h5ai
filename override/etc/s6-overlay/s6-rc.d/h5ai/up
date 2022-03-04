@@ -1,0 +1,10 @@
+#!/command/execlineb
+
+foreground { /bin/chown guardian:users /mnt/media }
+foreground {
+  if -n { /usr/bin/test -d /mnt/media/_h5ai }
+  /command/s6-setuidgid guardian /bin/mkdir -p /mnt/media/_h5ai
+}
+
+foreground { /command/s6-setuidgid guardian /bin/cp -Rn /var/www/html/_h5ai /mnt/media/ }
+foreground { /command/s6-setuidgid guardian /bin/cp -R /var/www/html/_h5ai/private/php /mnt/media/_h5ai/private/ }
