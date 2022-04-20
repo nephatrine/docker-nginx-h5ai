@@ -40,7 +40,6 @@ applications.
 
 ## Docker Tags
 
-- **nephatrine/nginx-h5ai:testing**: H5AI 0.31.0-glubsy / PHP 8.x / NGINX Mainline / Alpine Edge
 - **nephatrine/nginx-h5ai:latest**: H5AI 0.31.0-glubsy / PHP 8.x / NGINX Mainline / Alpine Latest
 
 ## Configuration Variables
