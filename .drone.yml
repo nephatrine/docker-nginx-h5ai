@@ -9,19 +9,37 @@ platform:
 
 steps:
 - name: build
+  environment:
+    PDR_USER:
+      from_secret: docker-user-pdr
+    PDR_PASS:
+      from_secret: docker-pass-pdr
   commands:
+  - docker build -t pdr.nephatrine.net/nephatrine/nginx-h5ai:cached --target builder .
   - docker build -t pdr.nephatrine.net/nephatrine/nginx-h5ai:latest .
-  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
+  - docker login -p "$PDR_PASS" -u "$PDR_USER" pdr.nephatrine.net
+  - docker push pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
+  - docker logout pdr.nephatrine.net
+- name: publish
+  environment:
+    DOCKER_USER:
+      from_secret: docker-user
+    DOCKER_PASS:
+      from_secret: docker-pass
+  commands:
   - docker tag pdr.nephatrine.net/nephatrine/nginx-h5ai:latest nephatrine/nginx-h5ai:latest
-  - HOME=/mnt/config/home docker push nephatrine/nginx-h5ai:latest
-  - docker rmi pdr.nephatrine.net/nephatrine/nginx-h5ai:latest
+  - docker login -p "$DOCKER_PASS" -u "$DOCKER_USER"
+  - docker push -a nephatrine/nginx-h5ai
+  - docker logout
+  depends_on:
+  - build
 
 ---
 kind: pipeline
-name: after
+name: notify
 
 steps:
-- name: notify
+- name: notify-status
   image: appleboy/drone-discord
   failure: ignore
   settings:
@@ -43,6 +61,6 @@ trigger:
 
 ---
 kind: signature
-hmac: c1a0be4377b47332d7e041007b00acd6af46154477676330dcd5ac8e0a85c823
+hmac: d7774cd61d67081b28130ce74c567ec5045e030e95dd5df70f810ef3d9ce5039
 
 ...
