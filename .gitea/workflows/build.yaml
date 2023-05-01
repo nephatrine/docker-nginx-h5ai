@@ -130,11 +130,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASS }}
       - name: Docker Manifest
         run: |
-          docker manifest create nephatrine/nginx-h5ai:8.2.6 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
-          docker manifest create nephatrine/nginx-h5ai:8.2 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
-          docker manifest create nephatrine/nginx-h5ai:8 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
+          docker manifest create nephatrine/nginx-h5ai:0.31.0 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
+          docker manifest create nephatrine/nginx-h5ai:0.31 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
+          docker manifest create nephatrine/nginx-h5ai:0 --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
           docker manifest create nephatrine/nginx-h5ai:latest --amend nephatrine/nginx-h5ai:latest-amd64 --amend nephatrine/nginx-h5ai:latest-arm64v8
-          docker manifest push --purge nephatrine/nginx-h5ai:8.2.6
-          docker manifest push --purge nephatrine/nginx-h5ai:8.2
-          docker manifest push --purge nephatrine/nginx-h5ai:8
+          docker manifest push --purge nephatrine/nginx-h5ai:0.31.0
+          docker manifest push --purge nephatrine/nginx-h5ai:0.31
+          docker manifest push --purge nephatrine/nginx-h5ai:0
           docker manifest push --purge nephatrine/nginx-h5ai:latest
