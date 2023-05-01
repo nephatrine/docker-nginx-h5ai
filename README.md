@@ -1,8 +1,6 @@
-[Git](https://code.nephatrine.net/nephatrine/docker-nginx-h5ai/src/branch/master) |
+[Git](https://code.nephatrine.net/NephNET/docker-nginx-h5ai/src/branch/master) |
 [Docker](https://hub.docker.com/r/nephatrine/nginx-h5ai/) |
 [unRAID](https://code.nephatrine.net/nephatrine/unraid-containers)
-
-[![Build Status](https://ci.nephatrine.net/api/badges/nephatrine/docker-nginx-h5ai/status.svg?ref=refs/heads/master)](https://ci.nephatrine.net/nephatrine/docker-nginx-h5ai)
 
 # H5AI Web Index
 
@@ -15,17 +13,13 @@ lock them down via the NGINX config or use a container that is not publicly
 accessible in the first place.
 
 If using this as a standalone web server, you can configure TLS the same way as
-the [nginx-ssl](https://hub.docker.com/r/nephatrine/nginx-ssl/) container. If
-part of a larger envinronment, we suggest using a separate container as a
-reverse proxy server and handle TLS there rather than here.
+the [nginx-ssl](https://code.nephatrine.net/NephNET/docker-nginx-ssl) container.
+If part of a larger envinronment, we suggest using a separate container as a
+reverse proxy server and handle TLS there instead.
 
-- [Alpine Linux](https://alpinelinux.org/)
-- [Skarnet Software](https://skarnet.org/software/)
-- [S6 Overlay](https://github.com/just-containers/s6-overlay)
-- [CertBot](https://certbot.eff.org/)
-- [NGINX](https://www.nginx.com/)
-- [PHP](https://www.php.net/)
-- [H5AI](https://larsjung.de/h5ai/)
+- [Alpine Linux](https://alpinelinux.org/) w/ [S6 Overlay](https://github.com/just-containers/s6-overlay)
+- [NGINX](https://www.nginx.com/) w/ [CertBot](https://certbot.eff.org/)
+- [PHP](https://www.php.net/) w/ [H5AI](https://larsjung.de/h5ai/)
 
 You can spin up a quick temporary test container like this:
 
@@ -33,14 +27,11 @@ You can spin up a quick temporary test container like this:
 docker run --rm -p 80:80 -it nephatrine/nginx-h5ai:latest /bin/bash
 ~~~
 
-This container is primarily intended to be used as a base container for PHP web
-applications.
-
 **Remember to change the password in the h5ai configuration as the info page might expose information about your server that you do not want exposed.**
 
 ## Docker Tags
 
-- **nephatrine/nginx-h5ai:latest**: H5AI 0.31.0-glubsy / PHP 8.x / NGINX Mainline / Alpine Latest
+- **nephatrine/nginx-h5ai:latest**: H5AI 0.31.0-glubsy / Alpine Latest
 
 ## Configuration Variables
 

@@ -1,4 +1,4 @@
-FROM nephatrine/nxbuilder:nodejs AS builder
+FROM nephatrine/nxbuilder:alpine AS builder
 
 ARG H5AI_VERSION=0.31.0
 RUN git -C /root clone -b "$H5AI_VERSION" --single-branch --depth=1 https://github.com/glubsy/h5ai.git
